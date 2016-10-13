@@ -1,0 +1,290 @@
+/* Support classes ------------------------------ */
+.is-hidden{
+	display:none
+}
+@media (min-width:900px){
+	.is-hidden\:desktop{
+		display:none!important
+	}
+}
+@media (max-width:900px){
+	.is-hidden\:mobile{
+		display:none!important
+	}
+}
+
+
+/* mainNav (baseline) --------------------------- */
+.mainNav{
+	position:absolute;
+	right:10px;
+	top:12px
+}
+.mainNav a{
+	color:#222;
+	font-weight:500
+}
+.mainNav > ul > li{
+	list-style-type:none
+}
+.mainNav > ul > li > a:hover{
+	text-decoration:none
+}
+.mainNav > ul > li > a:after{
+	background:#d43185;
+	bottom:-4px;
+	border-radius:9px;
+	content:'';
+	display:block;
+	left:0;
+	height:2px;
+	opacity:0;
+	transition:.2s;
+	width:100%
+}
+.mainNav > ul > li > a:hover:after{
+	bottom:1px;
+	opacity:1
+}
+.mainNav li{
+	display:inline-block
+}
+.mainNav li ul{
+	display:none
+}
+
+
+/* Main nav (mobile) ---------------------------- */
+@media (max-width:900px){
+	.mainNav{
+		z-index:9
+	}
+	.mainNav-logo{
+		background:#fff;
+		box-shadow:0 2px 4px rgba(0,0,0,.8);
+		left:0;
+		padding:16px 0 0;
+		position:fixed;
+		text-align:center;
+		top:0;
+		width:100%
+	}
+	.mainNav-logo > img{
+		height:45px;
+		width:auto
+	}
+
+	.mainNav .mainNav-menu{
+		background:#fff;
+		box-shadow:0 4px 9px rgba(0,0,0,0);
+		height:100%;
+		left:0;
+		overflow-y:auto;
+		padding:90px 20px 0 10px;
+		pointer-events:none;
+		position:fixed;
+		text-align:right;
+		-ms-transform:translateX(-200px);
+		transform:translateX(-200px);
+		transition:transform .1s;
+		width:200px;
+		will-change:transform,box-shadow;
+		top:0;
+		z-index:99
+	}
+	.mainNav.is-active .mainNav-menu{
+		box-shadow:0 4px 4px rgba(0,0,0,1);
+		pointer-events:all;
+		-ms-transform:translateX(0px);
+		transform:translateX(0px)
+	}
+
+	.mainNav .mainNav-blanker{
+		background:rgba(0,0,0,.7);
+		content:'';
+		display:block;
+		height:100vh;
+		left:0;
+		opacity:0;
+		pointer-events:none;
+		position:fixed;
+		transition:.2s;
+		top:0;
+		width:100vw;
+		will-change:opacity
+	}
+	.mainNav.is-active .mainNav-blanker{
+		opacity:1;
+		pointer-events:all
+	}
+
+	.mainNav .subMenu > ul{
+		display:none!important
+	}
+	.mainNav-menu > li{
+		display:block;
+		margin-bottom:16px
+	}
+	.mainNav-menu > li a{
+		display:block
+	}
+	.mainNav.is-active{}
+
+	.mainNav-toggle{
+		appearance:none;
+		background:#d43185;
+		border:none;
+		border-radius:50%;
+		box-shadow:none;
+		cursor:pointer;
+		display:block;
+		font-size:0;
+		height:50px;
+		left:10px;
+		margin:0;
+		opacity:.4;
+		overflow:hidden;
+		padding:0;
+		position:fixed;
+		text-indent:-9999px;
+		transition:.2s;
+		transform:scale(1) rotate(0deg);
+		transform-origin:center center;
+		top:10px;
+		width:50px;
+		will-change:transform;
+		z-index:999
+	}
+	.mainNav-toggle:hover{
+		opacity:1
+	}
+	.mainNav-toggle:active{
+		opacity:1;
+		transform:scale(.7) rotate(0deg);
+		z-index:999
+	}
+	.mainNav-toggle:focus{
+		outline:none
+	}
+
+	.mainNav.is-active .mainNav-toggle{
+		transform:scale(1) rotate(180deg)
+	}
+
+	.mainNav-toggle span{
+		background:white;
+		border-radius:3px;
+		display:block;
+		height:3px;
+		left:9px;
+		position:absolute;
+		right:9px;
+		top:23px
+	}
+
+	.mainNav-toggle span::before,
+	.mainNav-toggle span::after{
+		background-color:#fff;
+		border-radius:3px;
+		content:'';
+		display:block;
+		height:3px;
+		left:0;
+		position:absolute;
+		width:32px
+	}
+
+	.mainNav-toggle span::before{
+		top:-10px
+	}
+
+	.mainNav-toggle span::after{
+		bottom:-10px
+	}
+
+	.mainNav-toggle span{
+		transition:background 0s 0.1s
+	}
+
+	.mainNav-toggle span::before,
+	.mainNav-toggle span::after{
+		transition-delay:0.2s,0.05s;
+		transition-duration:0.2s,0.2s
+	}
+	.mainNav-toggle span::before{
+		transition-property:top,transform
+	}
+	.mainNav-toggle span::after{
+		transition-property:bottom,transform
+	}
+	.mainNav.is-active .mainNav-toggle{}
+	.mainNav.is-active .mainNav-toggle span{
+		background:none
+	}
+	.mainNav.is-active .mainNav-toggle span::before{
+		top:0;
+		transform:rotate(45deg)
+	}
+	.mainNav.is-active .mainNav-toggle span::after{
+		bottom:0;
+		transform:rotate(-45deg)
+	}
+	.mainNav.is-active .mainNav-toggle span::before,
+	.mainNav.is-active .mainNav-toggle span::after{
+		transition-delay:0s,0.1s
+	}
+}
+
+
+/* Main navigation (desktop) -------------------- */
+@media (min-width:900px){
+	.mainNav{
+		background:rgba(0,0,0,.9);
+		height:80px;
+		left:0;
+		position:fixed;
+		top:0;
+		width:100%;
+		z-index:9
+	}
+	.mainNav .mainNav-logo{
+		background:#fff;
+		display:inline-block;
+		height:100%;
+		padding:20px 40px
+	}
+	.mainNav .mainNav-logo img{
+		height:100%;
+		width:auto
+	}
+	.mainNav .menuToggle{
+		display:none
+	}
+	.mainNav > h2{
+		left:-130px;
+		position:absolute;
+		top:-180px
+	}
+	.mainNav > ul{
+		height:100%;
+		position:absolute;
+		right:30px;
+		top:0
+	}
+	.mainNav > ul > li{
+		display:inline-block;
+		height:100%;
+		list-style-type:none
+	}
+	.mainNav > ul > li > a{
+		color:#fff;
+		display:inline-block;
+		height:100%;
+		padding:25px 10px 0;
+		text-decoration:none
+	}
+	.mainNav > ul > li > a:hover{
+		background:#fff;
+		color:#555
+	}
+}
